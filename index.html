@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMDSystems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .matrix {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: black;
+            overflow: hidden;
+            z-index: -1;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix"></canvas>
+    <script>
+        const canvas = document.querySelector('.matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%".split("");
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00FF00";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+    </script>
+
+    <header class="p-4 shadow-md sticky top-0 z-50 fade-in bg-black border-b-2 border-green-500">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">[root@stormdezz ~]# SMDSystems</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="about.html" class="hover:text-green-400">Acerca de mí</a></li>
+                    <li><a href="skills.html" class="hover:text-green-400">Habilidades</a></li>
+                    <li><a href="projects.html" class="hover:text-green-400">Proyectos</a></li>
+                    <li><a href="contact.html" class="hover:text-green-400">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="text-center py-20 slide-up relative">
+        <div class="hero-content">
+            <h2 class="text-4xl font-bold mb-4">Holaamig@.mov</h2>
+            <p class="text-lg mb-6">Bienvenido o bienvenida a mi pagina personal!</p>
+        </div>
+        <div class="hero-content mt-8">
+            <h3 class="text-3xl font-bold mb-4">Introducción</h3>
+            <p class="text-lg mb-6">En esta pagina encontrarás información sobre mi, los proyectos que estoy realizando y mi blog, donde iré subiendo tutoriales y otro tipo de contenido a lo largo del tiempo. (Si no has visto Mr Robot no entenderás la cabecera de bienvenida)</p>
+        </div>
+    </section>
+</body>
+</html>

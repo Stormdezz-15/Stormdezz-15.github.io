@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos - SMDSystems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .slide-up {
+            animation: slideUp 1.5s ease-out;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="p-4 shadow-md sticky top-0 z-50 fade-in bg-black border-b-2 border-green-500">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">[root@stormdezz ~]# SMDSystems</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-green-400">Inicio</a></li>
+                    <li><a href="about.html" class="hover:text-green-400">Acerca de mí</a></li>
+                    <li><a href="skills.html" class="hover:text-green-400">Habilidades</a></li>
+                    <li><a href="contact.html" class="hover:text-green-400">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="projects" class="text-center py-20 slide-up relative">
+        <div class="hero-content">
+            <h2 class="text-4xl font-bold mb-4">./Proyectos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-black border border-green-500 rounded-lg">Proyecto 1: Seguridad en Redes</div>
+                <div class="p-4 bg-black border border-green-500 rounded-lg">Proyecto 2: Automatización con Ansible</div>
+                <div class="p-4 bg-black border border-green-500 rounded-lg">Proyecto 3: Monitoreo con Zabbix</div>
+                <div class="p-4 bg-black border border-green-500 rounded-lg">Proyecto 4: Infraestructura en la Nube</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
